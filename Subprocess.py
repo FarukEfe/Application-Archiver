@@ -12,6 +12,8 @@ class Subprocess:
         explorer_proc = proc.run(
                             r'explorer "C:\Users\efefr.USER"'
                             ,capture_output=True
+                            ,stderr=proc.PIPE
+                            ,check=True
                             )
         while True:
             print(explorer_proc.args)
