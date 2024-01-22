@@ -1,27 +1,18 @@
 # Subprocess class that opens FileExplorer and returns user input
 
 import subprocess as proc
+from tkinter import filedialog
 import time as t
 
 class Subprocess:
 
     def __init__(self):
         pass
-
-    def execute(self):
-        explorer_proc = proc.run(
-                            r'explorer "C:\Users\efefr.USER"'
-                            ,capture_output=True
-                            ,stderr=proc.PIPE
-                            ,check=True
-                            )
-        while True:
-            print(explorer_proc.args)
-            print(explorer_proc.returncode)
-            print(explorer_proc.stderr)
-            print(explorer_proc.stdout)
-            t.sleep(1)
-
+    
+    # Returns File URL
+    def execute(self) -> str:
+        return filedialog.askopenfilename(filetypes=(("Executable files", ""),("Any file","*")))
 
 a = Subprocess()
-a.execute()
+res = a.execute()
+print(res)
